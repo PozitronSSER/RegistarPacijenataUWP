@@ -10,5 +10,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Button Margin="1783,1020,0,25" Width="100" Height="35">Nastavi</Button>
         <Button Margin="1665,1019,0,26" Width="100" Height="35">Odustani</Button>
+        <TextBox HorizontalAlignment="Left" Text="Ime" VerticalAlignment="Top" Margin="42,38,0,0" Width="198"/>
+        <TextBox HorizontalAlignment="Left" Text="Prezime" VerticalAlignment="Top" Margin="42,80,0,0" Width="198"/>
     </Grid>
 </Page>
