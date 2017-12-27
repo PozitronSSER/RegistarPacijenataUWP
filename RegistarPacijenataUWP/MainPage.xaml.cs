@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
+using System.IO;
+using System.Xml;
+using System.Xml.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -133,10 +137,10 @@ namespace RegistarPacijenataUWP
             komplikacije = string.Join("\n", komplikacija.ToArray());
 
 
-            // provjera da li je sve odabrano
+            // provjera da li je sve odabrano i upozorenje korisniku ako nije
             try
             {
-                datumRodjenja = dateDatumRodjenja.ToString();
+                datumRodjenja = dateDatumRodjenja.Date.ToString();
                 spol = cmbSpol.SelectedItem.ToString();
                 paritetTrudnoce = cmbParitetTrudnoće.SelectedItem.ToString();
                 stavDjeteta = cmbStavDjeteta.SelectedItem.ToString();
@@ -155,6 +159,100 @@ namespace RegistarPacijenataUWP
                     gestacijskaDobTjedni, gestacijskaDobDani, porod, trajanjePoroda, profilaksa,
                     prom, febrilitet, rm, rd, og, apgarIndeks, reanimacija, patologije, komplikacije);
 
+                // provjera podataka
+                MsgBox.Show(unos.ToString(), "test");
+
+                // prebacivanje podataka u XML
+
+                /*
+                if (!File.Exists("Registar.xml"))
+                {
+                    XmlWriterSettings xmlWriterSettings = new XmlWriterSettings();
+                    xmlWriterSettings.Indent = true;
+                    xmlWriterSettings.NewLineOnAttributes = true;
+                    using (XmlWriter xmlWriter = XmlWriter.Create("Registar.xml", xmlWriterSettings))
+                    {
+                        xmlWriter.WriteStartDocument();
+                        xmlWriter.WriteStartElement("Registar");
+                        xmlWriter.WriteStartElement("Pacijent");
+
+                        xmlWriter.WriteElementString("Ime", ime);
+                        xmlWriter.WriteElementString("Prezime", prezime);
+                        xmlWriter.WriteElementString("Imemajke", imeMajke);
+                        xmlWriter.WriteElementString("Imeoca", imeOca);
+                        xmlWriter.WriteElementString("Adresa", adresa);
+                        xmlWriter.WriteElementString("Kontakttelefon", kontaktTelefon);
+                        xmlWriter.WriteElementString("Datumrođenja", Convert.ToString(datumRodenja));
+                        xmlWriter.WriteElementString("Spol", spol);
+                        xmlWriter.WriteElementString("Paritettrudnoće", paritetTrudnoce);
+                        xmlWriter.WriteElementString("PlodnostTrudnoće", trudnocaPlodna);
+                        xmlWriter.WriteElementString("PrirodaTrudnoće", trudnocaPrirodna);
+                        xmlWriter.WriteElementString("NačinPoroda", nacinPoroda);
+                        xmlWriter.WriteElementString("Trajanjeporoda", trajanjePoroda);
+                        xmlWriter.WriteElementString("Stavdjeteta", stavDjeteta);
+                        xmlWriter.WriteElementString("Profilaksa", profilaksa);
+                        xmlWriter.WriteElementString("PROM", prom);
+                        xmlWriter.WriteElementString("Ferbrilitet", febrilitetRodilje);
+                        xmlWriter.WriteElementString("Patologijatrudnoće", ConvertStringArrayToStringJoin(patologijaTrudnoce));
+                        xmlWriter.WriteElementString("Gestacijskadobtjedni", Convert.ToString(gestacijskaDobTjedana));
+                        xmlWriter.WriteElementString("Gestacijskadobdani", Convert.ToString(gestacijskaDobDana));
+                        xmlWriter.WriteElementString("Rodnamasa", Convert.ToString(rodnaMasa));
+                        xmlWriter.WriteElementString("Rodnaduljina", Convert.ToString(rodnaDuljina));
+                        xmlWriter.WriteElementString("Opsegglave", Convert.ToString(opsegGlave));
+                        xmlWriter.WriteElementString("Apgarindeks", apgarIndeks);
+                        xmlWriter.WriteElementString("Reanimacija", reanimacija);
+                        xmlWriter.WriteElementString("Komplikacije", ConvertStringArrayToStringJoin(komplikacije));
+
+                        xmlWriter.WriteEndElement();
+                        xmlWriter.WriteEndElement();
+                        xmlWriter.WriteEndDocument();
+                        xmlWriter.Flush();
+                        xmlWriter.Close();
+                    }
+                }
+                else
+                {
+                    */
+
+                
+
+                    XDocument xDocument = XDocument.Load("Registar.xml");
+                    XElement root = xDocument.Element("Registar");
+                    IEnumerable<XElement> rows = root.Descendants("Pacijent"); 
+                    XElement firstRow = rows.First();
+
+                    firstRow.AddBeforeSelf(
+                        new XElement("Pacijent",
+                        new XElement("Ime", ime),
+                        new XElement("Prezime", prezime),
+                        new XElement("Imemajke", imeMajke),
+                        new XElement("Imeoca", imeOca),
+                        new XElement("Adresa", adresa),
+                        new XElement("Kontakttelefon", kontaktTelefon),
+                        new XElement("Datumrođenja", datumRodjenja),
+                        new XElement("Spol", spol),
+                        new XElement("Paritettrudnoće", paritetTrudnoce),
+                        new XElement("PlodnostTrudnoće", plodnost),
+                        new XElement("Prirodatrudnće", nacinTrudnoce),
+                        new XElement("NačinPoroda", porod),
+                        new XElement("Trajanjeporoda", trajanjePoroda),
+                        new XElement("Stavdjeteta", stavDjeteta),
+                        new XElement("Profilaksa", profilaksa),
+                        new XElement("PROM", prom),
+                        new XElement("Ferbrilitet", febrilitet),
+                        new XElement("Patologijatrudnoće", patologije),
+                        new XElement("Gestacijskadobtjedni", gestacijskaDobTjedni),
+                        new XElement("Gestacijskadobdani", gestacijskaDobDani),
+                        new XElement("Rodnamasa", rm),
+                        new XElement("Rodnaduljina", rd),
+                        new XElement("Opsegglave", og),
+                        new XElement("Apgarindeks", apgarIndeks),
+                        new XElement("Reanimacija", reanimacija),
+                        new XElement("Komplikacije", komplikacije)));
+
+                    xDocument.Save();
+             //   }
+
             }
             catch
             {
@@ -165,8 +263,7 @@ namespace RegistarPacijenataUWP
             
 
 
-            // prebacivanje podataka u XML
-
+            
 
 
             MsgBox.Show("Da li želite unesti još podataka?", "Unos uspješan");
@@ -220,6 +317,11 @@ namespace RegistarPacijenataUWP
             chkNEC.IsChecked = false;
             chkROP.IsChecked = false;
             txtKomplikacijeOstalo.Text = "";
+        }
+
+        private void btnIzlaz_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.Exit();
         }
     }
 }

@@ -9,7 +9,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" RequestedTheme="Light" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Button x:Name="btnNastavi" Margin="914,554,0,11" Width="100" Height="35" Click="btnNastavi_Click">Nastavi</Button>
-        <Button x:Name="btnOdustani" Margin="804,554,0,11" Width="100" Height="35">Odustani</Button>
+        <Button x:Name="btnIzlaz" Margin="804,554,0,11" Width="100" Height="35" Click="btnIzlaz_Click">Izađi</Button>
         <TextBox TabIndex ="0" x:Name="txtIme" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Margin="42,40,0,0" Width="198" PlaceholderText="Ime"/>
         <TextBox TabIndex ="1" x:Name="txtPrezime" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Margin="42,80,0,0" Width="198" PlaceholderText="Prezime"/>
         <TextBox TabIndex ="2" x:Name="txtImeOca" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Margin="42,120,0,0" Width="198" PlaceholderText="Ime oca"/>

@@ -67,7 +67,13 @@ namespace RegistarPacijenataUWP
 
         public override string ToString()
         {
-            return base.ToString();
+            string opisObjekta;
+            opisObjekta = ime +" "+  prezime +" "+  imeMajke +" "+  imeOca +" "+  adresa +" "+  kontaktTelefon +" "+ 
+                    datumRodjenja +" "+  spol +" "+  paritetTrudnoce +" "+  stavDjeteta +" "+  plodnost +" "+  nacinTrudnoce +" "+ 
+                    gestacijskaDobTjedni +" "+  gestacijskaDobDani +" "+  porod +" "+  trajanjePoroda +" "+  profilaksa +" "+ 
+                    prom +" "+  febrilitet +" "+  rm +" "+  rd +" "+  og +" "+  apgarIndeks +" "+  reanimacija +" "+  patologije +" "+  komplikacije;
+
+            return opisObjekta;
         }
 
         public override bool Equals(object obj)
