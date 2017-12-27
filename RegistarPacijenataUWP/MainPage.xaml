@@ -5,12 +5,231 @@
     xmlns:local="using:RegistarPacijenataUWP"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Width="1024" Height="600">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button Margin="1783,1020,0,25" Width="100" Height="35">Nastavi</Button>
-        <Button Margin="1665,1019,0,26" Width="100" Height="35">Odustani</Button>
-        <TextBox HorizontalAlignment="Left" Text="Ime" VerticalAlignment="Top" Margin="42,38,0,0" Width="198"/>
-        <TextBox HorizontalAlignment="Left" Text="Prezime" VerticalAlignment="Top" Margin="42,80,0,0" Width="198"/>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" RequestedTheme="Light" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Button x:Name="btnNastavi" Margin="914,554,0,11" Width="100" Height="35" Click="btnNastavi_Click">Nastavi</Button>
+        <Button x:Name="btnOdustani" Margin="804,554,0,11" Width="100" Height="35">Odustani</Button>
+        <TextBox TabIndex ="0" x:Name="txtIme" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Margin="42,40,0,0" Width="198" PlaceholderText="Ime"/>
+        <TextBox TabIndex ="1" x:Name="txtPrezime" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Margin="42,80,0,0" Width="198" PlaceholderText="Prezime"/>
+        <TextBox TabIndex ="2" x:Name="txtImeOca" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Margin="42,120,0,0" Width="198" PlaceholderText="Ime oca"/>
+        <TextBox TabIndex ="3" x:Name="txtImeMajke" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Margin="42,160,0,0" Width="198" PlaceholderText="Ime majke"/>
+        <TextBox TabIndex ="5" x:Name="txtAdresa" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Margin="42,240,0,0" Width="198" PlaceholderText="Adresa"/>
+        <TextBox TabIndex ="6" x:Name="txtBrojTelefona" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Margin="42,280,0,0" Width="198" PlaceholderText="Kontakt telefon"/>
+        <CalendarDatePicker TabIndex ="7" x:Name="dateDatumRodjenja" HorizontalAlignment="Left" Margin="42,320,0,0" VerticalAlignment="Top" Width="198" PlaceholderText="Datum Rođenja" DateFormat="{}{day.integer}/{month.integer}/{year.full}"/>
+        <ComboBox TabIndex ="4" x:Name="cmbSpol" HorizontalAlignment="Left" Margin="42,200,0,11" VerticalAlignment="Top" Width="198" PlaceholderText="Spol" IsSynchronizedWithCurrentItem="False"/>
+        <ComboBox TabIndex ="8" x:Name="cmbParitetTrudnoće" HorizontalAlignment="Left" Margin="42,360,0,0" VerticalAlignment="Top" Width="198" PlaceholderText="Paritet trudnoće"/>
+        <ComboBox TabIndex ="9" x:Name="cmbStavDjeteta" HorizontalAlignment="Left" Margin="42,400,0,0" VerticalAlignment="Top" Width="198" PlaceholderText="Stav djeteta"/>
+        <ComboBox x:Name="cmbPlodnost" 
+                  TabIndex ="10"
+                  HorizontalAlignment="Left" 
+                  Margin="42,440,0,0" 
+                  VerticalAlignment="Top" 
+                  Width="198" 
+                  PlaceholderText="Plodnost"/>
+        <ComboBox x:Name="cmbTrudnoca" 
+                  TabIndex ="11"
+                HorizontalAlignment="Left" 
+                Margin="42,480,0,0" 
+                VerticalAlignment="Top" 
+                Width="198" 
+                PlaceholderText="Trudnoća"/>
+        <TextBox TabIndex ="12"
+                 x:Name="txtGestacijskaDobTjedana"
+                 HorizontalAlignment="Left" 
+                 Text="" 
+                 VerticalAlignment="Top" 
+                 Margin="260,40,0,0" 
+                 Width="198" 
+                 PlaceholderText="Gestacijska dob (Tjedni)"/>
+        <TextBox TabIndex ="13"
+                x:Name="txtGestacijskaDobDana"
+                HorizontalAlignment="Left" 
+                Text="" 
+                VerticalAlignment="Top" 
+                Margin="260,80,0,0" 
+                Width="198" 
+                PlaceholderText="Gestacijska dob (Dani)"/>
+        <ComboBox TabIndex ="21" 
+                  x:Name="cmbPorod" 
+                  HorizontalAlignment="Left" 
+                  Margin="260,400,0,0" 
+                  VerticalAlignment="Top" 
+                  Width="198" 
+                  PlaceholderText="Porod" 
+                  IsSynchronizedWithCurrentItem="False"/>
+        <CheckBox x:Name="chkKrvarenje" TabIndex ="14" 
+                  Content="Krvarenje"
+                  HorizontalAlignment="Left" 
+                  Margin="265,140,0,0" 
+                  VerticalAlignment="Top"/>
+        <CheckBox x:Name="chkDijabetes" TabIndex ="15" 
+                  Content="Dijabetes"
+                  HorizontalAlignment="Left" 
+                  Margin="265,170,0,0" 
+                  VerticalAlignment="Top"/>
+        <CheckBox x:Name="chkPPI" TabIndex ="16" 
+                  Content="PPI"
+                  HorizontalAlignment="Left" 
+                  Margin="265,200,0,0" 
+                  VerticalAlignment="Top"/>
+        <CheckBox x:Name="chkInfekcije" TabIndex ="17" 
+                  Content="Infekcije"
+                  HorizontalAlignment="Left" 
+                  Margin="265,230,0,0" 
+                  VerticalAlignment="Top"/>
+        <CheckBox x:Name="chkHipertenzija" TabIndex ="18" 
+                  Content="Hipertenzija"
+                  HorizontalAlignment="Left" 
+                  Margin="265,260,0,0" 
+                  VerticalAlignment="Top"/>
+        <CheckBox x:Name="chkEPH" TabIndex ="19" 
+                  Content="EPH"
+                  HorizontalAlignment="Left" 
+                  Margin="265,290,0,0" 
+                  VerticalAlignment="Top"/>
+        <TextBox TabIndex ="20"
+                x:Name="txtPatologijaOstalo"
+                HorizontalAlignment="Left" 
+                Text="" 
+                VerticalAlignment="Top" 
+                Margin="260,330,0,0" 
+                Width="198" 
+                PlaceholderText="Ostalo"/>
+        <TextBox TabIndex ="22"
+                x:Name="txtTrajanjePoroda"
+                HorizontalAlignment="Left" 
+                Text="" 
+                VerticalAlignment="Top" 
+                Margin="260,440,0,0" 
+                Width="198" 
+                PlaceholderText="Trajanje poroda (sati)"/>
+        <ComboBox TabIndex ="23" 
+                  x:Name="cmbProfilaksa" 
+                  HorizontalAlignment="Left" 
+                  Margin="260,480,0,0" 
+                  VerticalAlignment="Top" 
+                  Width="198" 
+                  PlaceholderText="Kortikosteroidna profilaksa" 
+                  IsSynchronizedWithCurrentItem="False"/>
+        <TextBlock HorizontalAlignment="Left" Margin="260,120,0,0" Text="Patologija trudnoće" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <ComboBox TabIndex ="24" 
+            x:Name="cmbPROM" 
+            HorizontalAlignment="Left" 
+            Margin="480,40,0,0" 
+            VerticalAlignment="Top" 
+            Width="198" 
+            PlaceholderText="PROM" 
+            IsSynchronizedWithCurrentItem="False"/>
+        <ComboBox TabIndex ="25" 
+            x:Name="cmbFebrilitet" 
+            HorizontalAlignment="Left" 
+            Margin="480,80,0,0" 
+            VerticalAlignment="Top" 
+            Width="198" 
+            PlaceholderText="Febrilitet rodilje" 
+            IsSynchronizedWithCurrentItem="False"/>
+        <CheckBox x:Name="chkHipoglikemija" TabIndex ="31" 
+            Content="Hipoglikemija"
+            HorizontalAlignment="Left" 
+            Margin="710,60,0,0" 
+            VerticalAlignment="Top"/>
+        <CheckBox x:Name="chkRDS" TabIndex ="32" 
+            Content="RDS"
+            HorizontalAlignment="Left" 
+            Margin="710,90,0,0" 
+            VerticalAlignment="Top"/>
+        <CheckBox x:Name="chkVentilacija" TabIndex ="33" 
+            Content="Mehanička ventilacija (&gt;72h)"
+            HorizontalAlignment="Left" 
+            Margin="710,120,0,0" 
+            VerticalAlignment="Top"/>
+        <CheckBox x:Name="chkSepsa" TabIndex ="34" 
+            Content="Sepsa"
+            HorizontalAlignment="Left" 
+            Margin="710,150,0,0" 
+            VerticalAlignment="Top"/>
+        <CheckBox x:Name="chkBilirubin" TabIndex ="35" 
+            Content="Hiperbilirubinemija"
+            HorizontalAlignment="Left" 
+            Margin="710,180,0,0" 
+            VerticalAlignment="Top"/>
+        <CheckBox x:Name="chkKonvulzije" TabIndex ="36" 
+            Content="Konvulzije"
+            HorizontalAlignment="Left" 
+            Margin="710,210,0,0" 
+            VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="705,40,0,0" Text="Komplikacije" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <CheckBox x:Name="chkPVL" TabIndex ="37" 
+            Content="PVL"
+            HorizontalAlignment="Left" 
+            Margin="710,240,0,0" 
+            VerticalAlignment="Top"/>
+        <CheckBox x:Name="chkPVIVH" TabIndex ="38" 
+            Content="PV - IVH"
+            HorizontalAlignment="Left" 
+            Margin="710,270,0,0" 
+            VerticalAlignment="Top"/>
+        <CheckBox x:Name="chkNEC" TabIndex ="39" 
+            Content="NEC"
+            HorizontalAlignment="Left" 
+            Margin="710,300,0,0" 
+            VerticalAlignment="Top"/>
+        <CheckBox x:Name="chkROP" TabIndex ="40" 
+            Content="ROP"
+            HorizontalAlignment="Left" 
+            Margin="710,330,0,0" 
+            VerticalAlignment="Top"/>
+        <TextBox TabIndex ="41"
+                x:Name="txtKomplikacijeOstalo"
+                HorizontalAlignment="Left" 
+                Text="" 
+                VerticalAlignment="Top" 
+                Margin="700,370,0,0" 
+                Width="198" 
+                PlaceholderText="Ostalo"/>
+        <TextBox TabIndex ="26"
+            x:Name="txtRodnaMasa"
+            HorizontalAlignment="Left" 
+            Text="" 
+            VerticalAlignment="Top" 
+            Margin="480,120,0,0" 
+            Width="198" 
+            PlaceholderText="Rodna masa (RM/g)"/>
+        <TextBox TabIndex ="27"
+            x:Name="txtRodnaDuljina"
+            HorizontalAlignment="Left" 
+            Text="" 
+            VerticalAlignment="Top" 
+            Margin="480,160,0,0" 
+            Width="198" 
+            PlaceholderText="Rodna duljina (RD/cm)"/>
+        <TextBox TabIndex ="28"
+            x:Name="txtOpsegGlave"
+            HorizontalAlignment="Left" 
+            Text="" 
+            VerticalAlignment="Top" 
+            Margin="480,200,0,0" 
+            Width="198" 
+            PlaceholderText="Opseg glave (OG/cm)"/>
+        <TextBox TabIndex ="29"
+            x:Name="txtApgar"
+            HorizontalAlignment="Left" 
+            Text="" 
+            VerticalAlignment="Top" 
+            Margin="480,240,0,0" 
+            Width="198" 
+            PlaceholderText="Apgar indeks"/>
+        <ComboBox TabIndex ="30" 
+            x:Name="cmbReanimacija" 
+            HorizontalAlignment="Left" 
+            Margin="480,280,0,0" 
+            VerticalAlignment="Top" 
+            Width="198" 
+            PlaceholderText="Reanimacija" 
+            IsSynchronizedWithCurrentItem="False"/>
+
+
+
     </Grid>
 </Page>
